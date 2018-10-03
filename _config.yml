@@ -19,8 +19,8 @@ title_separator          : "-"
 name                     : &name "GO0DMAN" # &name is a YAML anchor which can be *referenced later
 description              : &description "Innovation Shop for the EU Project GO0DMAN"
 url                      : https://ADOxx-org.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/GO0DMAN-Innovation-Shop" # the subpath of your site, e.g. "/blog"
-repository               : "ADOxx-org/GO0DMAN-Innovation-Shop"
+baseurl                  : "/olive-jekyll-test" # the subpath of your site, e.g. "/blog"
+repository               : "ADOxx-org/olive-jekyll-test"
 teaser                   : "/assets/images/go0dman_blue.png" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
