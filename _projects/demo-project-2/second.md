@@ -18,7 +18,7 @@ microservices:
     microserviceId: "2101db0f-c84f-4ceb-bcf5-7072d5042301"
     operationId: "default"
     inputJSON: "{}"
-    outputAlg: ""
+    outputAlg: "return output.dataText;"
 ---
 
 # Project SECOND PAGE
