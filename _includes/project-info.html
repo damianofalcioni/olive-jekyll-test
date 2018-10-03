@@ -1,0 +1,9 @@
+{% if include.owner %}
+  <b>Owner: </b> {{include.owner | markdownify | remove: '<p>' | remove: '</p>'}} </br>
+{% endif %}
+{% if include.trl %}
+  <b>Technology Readiness Level: </b> {{include.trl | markdownify | remove: '<p>' | remove: '</p>'}} </br>
+{% endif %}
+{% if include.environment %}
+  <b>Environment: </b> {{include.environment | markdownify | remove: '<p>' | remove: '</p>'}} </br>
+{% endif %}

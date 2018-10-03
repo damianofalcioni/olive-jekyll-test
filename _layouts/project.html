@@ -1,0 +1,66 @@
+---
+layout: single
+---
+<p style="font-size:.75em;">{% include project-info.html owner=page.owner trl=page.trl environment=page.environment %}</p>
+
+{{ content }}
+
+{% if page.sections and page.sections.informations %}
+  <h3>Informations</h3>
+  {{page.sections.informations}}
+{% endif %}
+{% if page.sections and page.sections.usage %}
+  <h3>Usage</h3>
+  {{page.sections.usage}}
+{% endif %}
+{% if page.sections and page.sections.extend %}
+  <h3>Extend</h3>
+  {{page.sections.extend}}
+{% endif %}
+
+
+
+{% if page.microservices %}
+  <script src="https://damianofalcioni.github.io/CDN/js/mscView.js"></script>
+  <style>
+.link{
+    cursor: pointer;
+    color: #428bca;
+    white-space: nowrap;
+}
+.link:hover{
+    color: #FFFFFF;
+    background-color: #428bca;
+}
+.loading {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.05) url(https://damianofalcioni.github.io/CDN/icons/loading.gif) center center no-repeat;
+}
+  </style>
+  <div id="viewPanel"></div>
+  <script type="text/javascript">
+'use strict';
+
+var viewModuleConfig = {
+    contentJsonArray: [
+    {% for ms in page.microservices %}
+      {
+        menuName: '{% if ms.name %}{{ ms.name }}{% endif %}',
+        microserviceId: '{% if ms.microserviceId %}{{ ms.microserviceId }}{% endif %}',
+        operationId: '{% if ms.operationId %}{{ ms.operationId }}{% endif %}',
+        microserviceInputJSON: '{% if ms.inputJSON %}{{ ms.inputJSON }}{% endif %}',
+        microserviceOutputAdaptAlg: '{% if ms.outputAlg %}{{ ms.outputAlg }}{% endif %}'
+      },
+    {% endfor %}
+    ],
+    mscEndpoint: '{{site.mscEndpont}}',
+    viewName: ''
+};
+
+var viewModule = olive.modules.newOliveViewUI(viewModuleConfig);
+
+$('#viewPanel').append(viewModule.render());
+
+  </script>
+{% endif %}
