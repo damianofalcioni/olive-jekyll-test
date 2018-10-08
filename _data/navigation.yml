@@ -1,6 +1,8 @@
 # main links
 main:
+  - title: "Microservice Management"
+    url: /msc/
   - title: "Contribute"
-    url: https://github.com/ADOxx-org/GO0DMAN-Innovation-Shop/
+    url: https://github.com/damianofalcioni/olive-jekyll-test/
   - title: "Report an Issue"
-    url: https://github.com/ADOxx-org/GO0DMAN-Innovation-Shop/issues
+    url: https://github.com/damianofalcioni/olive-jekyll-test/issues
