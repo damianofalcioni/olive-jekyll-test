@@ -5,6 +5,7 @@ layout: single
 {{ content }}
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>Window.$ = Window.jQuery;</script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -55,7 +56,7 @@ layout: single
   <code id="resultsPanel"></code>
   <script type="text/javascript">
 'use strict';
-$ = Window.jQuery;
+
 var module = olive.modules.newMicroserviceManagementInlineUI({
     mscEndpoint: '{{site.mscEndpont}}',
     callBtnText: 'Use It!',
