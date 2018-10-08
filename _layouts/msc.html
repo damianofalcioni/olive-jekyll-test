@@ -61,7 +61,7 @@ var module = olive.modules.newMicroserviceManagementInlineUI({
     mscEndpoint: '{{site.mscEndpont}}',
     callBtnText: 'Use It!',
     callConfigHandlerFn: function (msCallConfig, microserviceId, operationId) {
-      $('#resultsPanel').html('microservices:\n  - name: "' + msCallConfig.serviceName + '"\n    microserviceId: "'+ microserviceId +'"\n    operationId: "'+operationId+'"\n    inputJSON: "'+JSON.stringify(msCallConfig.microserviceInputs)+'"\n    outputAlg: "'+msCallConfig.microserviceOutputAdaptAlg.replace('"', '\"')+'"\n');
+      $('#resultsPanel').html('microservices:\n  - name: "' + msCallConfig.serviceName + '"\n    microserviceId: "'+ microserviceId +'"\n    operationId: "'+operationId+'"\n    inputJSON: "'+JSON.stringify(msCallConfig.microserviceInputs)+'"\n    outputAlg: "'+msCallConfig.microserviceOutputAdaptAlg.replace(/"/g, '\\"')+'"\n');
     }
 });
 $('#adminPanel').append(module.render());
