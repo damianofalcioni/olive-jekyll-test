@@ -2,6 +2,8 @@
 layout: single
 ---
 
+{{ content }}
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -50,14 +52,16 @@ layout: single
 }
   </style>
   <div id="adminPanel"></div>
+  <code id="resultsPanel"></code>
   <script type="text/javascript">
 'use strict';
 
-var adminModuleConfig = {
+var module = olive.modules.newMicroserviceManagementInlineUI({
     mscEndpoint: '{{site.mscEndpont}}',
-    callBtnText: 'Test a Call',
-    callConfigHandlerFn: null
-};
-var module = olive.modules.newMicroserviceManagementInlineUI(adminModuleConfig);
+    callBtnText: 'Use It!',
+    callConfigHandlerFn: function (msCallConfig, microserviceId, operationId) {
+      $('#resultsPanel').html('microservices:\n  -name: "' + msCallConfig.serviceName + '"\n  -microserviceId: "'+ microserviceId +'"\n  -operationId: "'+operationId+'"\n  -inputJSON: "'+JSON.stringify(msCallConfig.microserviceInputs)+'"\n  -outputAlg: "'+msCallConfig.microserviceOutputAdaptAlg.replace('"', '\"')+'"\n');
+    }
+});
 $('#adminPanel').append(module.render());
   </script>
