@@ -63,7 +63,7 @@ var module = olive.modules.newMicroserviceManagementInlineUI({
     callConfigHandlerFn: function (msCallConfig, microserviceId, operationId) {
       $('#resultsPanel').html('microservices:\n  - name: "' + msCallConfig.serviceName + '"\n    microserviceId: "'+ microserviceId +'"\n    operationId: "'+operationId+'"\n    inputJSON: "'+JSON.stringify(msCallConfig.microserviceInputs)+'"\n    outputAlg: "'+msCallConfig.microserviceOutputAdaptAlg.replace(/"/g, '\\"')+'"\n');
     },
-    showServiceNameTxt: false
+    showServiceNameTxt: true
 });
 $('#adminPanel').append(module.render());
   </script>
