@@ -57,7 +57,10 @@ layout: single
 'use strict';
 
 var viewModuleConfig = {
-    contentJsonArray: [
+    mscEndpoint: '{{site.mscEndpont}}',
+    viewName: ''
+};
+var viewModuleContent = [
     {% for ms in page.microservices %}
       {
         menuName: '{% if ms.name %}{{ ms.name }}{% endif %}',
@@ -67,13 +70,9 @@ var viewModuleConfig = {
         microserviceOutputAdaptAlg: '{% if ms.outputAlg %}{{ ms.outputAlg }}{% endif %}'
       },
     {% endfor %}
-    ],
-    mscEndpoint: '{{site.mscEndpont}}',
-    viewName: ''
-};
-
+    ];
 var viewModule = olive.modules.newOliveViewUI(viewModuleConfig);
-
+viewModule.setContent(viewModuleContent);
 $('#viewPanel').append(viewModule.render());
 
   </script>
