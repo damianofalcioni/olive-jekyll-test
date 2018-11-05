@@ -4,66 +4,74 @@ layout: single
 
 {{ content }}
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>Window.$ = Window.jQuery;</script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/mode-javascript.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/mode/javascript/javascript.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css">
 
-  <script src="https://damianofalcioni.github.io/CDN/js/msc.js"></script>
-  <!--
-   <link rel="stylesheet" type="text/css" href="{{ '/assets/css/bootstrap.min.css' | relative_url }}">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
-  -->
-  <style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css">
+
+<script src="https://damianofalcioni.github.io/CDN/js/msc.js"></script>
+<!--
+<link rel="stylesheet" type="text/css" href="{{ '/assets/css/bootstrap.min.css' | relative_url }}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+-->
+<style>
 .link{
-    cursor: pointer;
-    color: #428bca;
-    white-space: nowrap;
+  cursor: pointer;
+  color: #428bca;
+  white-space: nowrap;
 }
 .link:hover{
-    color: #FFFFFF;
-    background-color: #428bca;
+  color: #FFFFFF;
+  background-color: #428bca;
 }
 .loading {
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.05) url(https://damianofalcioni.github.io/CDN/icons/loading.gif) center center no-repeat;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.05) url(https://damianofalcioni.github.io/CDN/icons/loading.gif) center center no-repeat;
 }
 .popover {
-    max-width: 50em !important;
+  max-width: 50em !important;
 }
 
 .modal-dialog{
-    display: table;
-    width: auto;
-    min-width: 1000px;   
+  display: table;
+  width: auto;
+  min-width: 1000px;   
 }
 
 .note-editor.note-frame.panel {
-    margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
 .page {
-    padding-right: 0px !important;
+  padding-right: 0px !important;
 }
-  </style>
-  <div id="adminPanel"></div>
-  <pre id="resultsPanel"></pre>
-  <script type="text/javascript">
+.CodeMirror {
+  height: auto !important;
+  border: 1px solid #ddd !important;
+}
+.CodeMirror-scroll {
+  max-height: 200px !important;
+}
+</style>
+<div id="adminPanel"></div>
+<pre id="resultsPanel"></pre>
+<script type="text/javascript">
 'use strict';
-
 var module = olive.modules.newMicroserviceManagementInlineUI({
-    mscEndpoint: '{{site.mscEndpont}}',
-    callBtnText: 'Use It!',
-    callConfigHandlerFn: function (msCallConfig, microserviceId, operationId) {
-      $('#resultsPanel').html('microservices:\n  - name: "' + msCallConfig.serviceName + '"\n    microserviceId: "'+ microserviceId +'"\n    operationId: "'+operationId+'"\n    inputJSON: "'+JSON.stringify(msCallConfig.microserviceInputs)+'"\n    outputAlg: "'+msCallConfig.microserviceOutputAdaptAlg.replace(/"/g, '\\"').replace(/\n/g,"\\n")+'"\n');
-    },
-    showServiceNameTxt: true
+  mscEndpoint: '{{site.mscEndpont}}',
+  callBtnText: 'Use It!',
+  callConfigHandlerFn: function (msCallConfig, microserviceId, operationId) {
+    $('#resultsPanel').html('microservices:\n  - name: "' + msCallConfig.serviceName + '"\n    microserviceId: "'+ microserviceId +'"\n    operationId: "'+operationId+'"\n    inputJSON: "'+JSON.stringify(msCallConfig.microserviceInputs)+'"\n    outputAlg: "'+msCallConfig.microserviceOutputAdaptAlg.replace(/"/g, '\\"').replace(/\n/g,"\\n")+'"\n');
+  },
+  showServiceNameTxt: true
 });
 $('#adminPanel').append(module.render());
-  </script>
+</script>
