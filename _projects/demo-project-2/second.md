@@ -14,11 +14,11 @@ sidebar:
   - text: "[Second page](../second/)"
 
 microservices:
-  - name: "Test"
-    microserviceId: "2101db0f-c84f-4ceb-bcf5-7072d5042301"
+  - name: "Hello World"
+    microserviceId: "1738cb62-cc55-4abf-8560-feafdb83260c"
     operationId: "default"
-    inputJSON: "{}"
-    outputAlg: "return output.dataText;"
+    inputJSON: "{\"Append Text\":{\"value\":\"World\"}}"
+    outputAlg: "/*\n  Javascript algoritm that _return_ a DOM object.\n  The algorithm can access the microservice output content\n  using the variable output\n*/\nreturn output.dataText;"
 ---
 
 # Project SECOND PAGE
