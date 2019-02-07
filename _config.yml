@@ -10,7 +10,8 @@ remote_theme             : "damianofalcioni/minimal-mistakes-template" # "mmista
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Olive Settings
-mscEndpont               : "http://localhost:8080/micro-service-controller-rest/rest/"
+#mscEndpont               : "http://localhost:8080/micro-service-controller-rest/rest/"
+mscEndpont               : "https://www.adoxx.org/micro-service-controller-rest/rest/"
 
 # Site Settings
 locale                   : "en-US"
